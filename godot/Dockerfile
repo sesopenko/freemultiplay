@@ -43,4 +43,4 @@ WORKDIR /data/freemultiplay
 
 RUN godot --export-pack Server dedicated.pck
 
-CMD ["godot-server", "/data/freemultiplay/dedicated.pck"]
+CMD ["godot-server", "/data/freemultiplay/dedicated.pck", "--server"]

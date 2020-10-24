@@ -1,3 +1,7 @@
 # IDE
-
 .vscode
+.idea
+
+# Build artifacts
+freemultiplay.exe
+swagger.json

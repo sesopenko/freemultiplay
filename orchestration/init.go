@@ -1,8 +1,7 @@
 package orchestration
 
 import (
-	"fmt"
-	"html"
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
@@ -10,11 +9,18 @@ import (
 const SERVER_PORT = 8000
 
 func Init() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hellow, %q", html.EscapeString(r.URL.Path))
+	r := gin.Default()
+	sl := NewServerList()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
 	})
 
-	log.Println(fmt.Sprintf("Listening on localhost: %d", SERVER_PORT))
-	listen_port := fmt.Sprintf(":%d", SERVER_PORT)
-	log.Fatal(http.ListenAndServe(listen_port, nil))
+	r.PUT("/game-server", func(c *gin.Context) {
+		server := sl.SpawnGameServer()
+		c.ProtoBuf(http.StatusOK, server)
+		log.Printf("New Server List:", sl)
+	})
+	r.Run()
 }

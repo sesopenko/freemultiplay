@@ -19,6 +19,10 @@ config/name="FreeMultiPlay"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "protobuf" )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

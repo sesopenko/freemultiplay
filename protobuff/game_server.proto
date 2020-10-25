@@ -1,0 +1,13 @@
+syntax = "proto3";
+package freemultiplay;
+
+option go_package = "protobuff";
+
+message GameServer {
+  string id = 1;
+  int64 created_time = 3;
+}
+
+message GameServerList {
+  repeated GameServer game_servers = 1;
+}

@@ -10,12 +10,12 @@ RUN apt-get install wget unzip -y
 WORKDIR /tmp
 
 # get the headless version
-RUN wget https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_HEADLESS_DIST}.zip
+RUN wget -q https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_HEADLESS_DIST}.zip
 RUN unzip ${GODOT_HEADLESS_DIST}.zip
 RUN mv ${GODOT_HEADLESS_DIST} /usr/local/bin/godot
 
 # get the standalone server
-RUN wget https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_STANDALONE_DIST}.zip
+RUN wget -q https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/${GODOT_STANDALONE_DIST}.zip
 
 RUN unzip ${GODOT_STANDALONE_DIST}.zip
 
@@ -24,7 +24,7 @@ RUN mv ${GODOT_STANDALONE_DIST} ${INSTALL_LOC_STANDALONE}
 
 RUN mkdir -p $HOME/.local/share/godot
 
-RUN wget https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
+RUN wget -q https://downloads.tuxfamily.org/godotengine/${GODOT_VERSION}/Godot_v${GODOT_VERSION}-stable_export_templates.tpz
 
 RUN unzip Godot_v${GODOT_VERSION}-stable_export_templates.tpz -d /root/.local/share/godot/
 
@@ -37,7 +37,7 @@ RUN mkdir -p /root/.local/share/godot
 
 COPY --from=godot-installer /root/.local/share/godot /root/.local/share/godot
 
-COPY . /data/freemultiplay
+COPY ./godot /data/freemultiplay
 
 WORKDIR /data/freemultiplay
 

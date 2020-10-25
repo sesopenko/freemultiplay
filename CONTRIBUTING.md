@@ -6,10 +6,9 @@
 2. Install [Docker](https://docker.com/)
 3. Build dockerfile `cd godot && docker build . -t "dedicated"
 4. Test docker image `docker run -it dedicated`. Should run without errors.
-5. Install [Minikube](https://minikube.sigs.k8s.io/docs/start/)
-6. Install [Go](https://golang.org/doc/install)
-7. Install Cobra: `go install github.com/spf13/cobra/cobra`
-8. Install Go Protocol Buffers: `go install google.golang.org/protobuf/cmd/protoc-gen-go`
+5. Install [Go](https://golang.org/doc/install)
+6. Install Cobra: `go install github.com/spf13/cobra/cobra`
+7. Install Go Protocol Buffers: `go install google.golang.org/protobuf/cmd/protoc-gen-go`
 
 ## Generating protobuffs code
 
